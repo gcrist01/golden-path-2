@@ -1,0 +1,24 @@
+# For most projects, this workflow file will not need to be changed; you simply need
+# to commit it to your repository to start scanning changes.
+#
+# You may wish to alter this file to add a scheduled scan. 
+# If so, uncomment the appropriate line and customise the cron schedule.
+#
+# Security Engineering will manage Pull Request scans via a centrally-managed
+# Organization Ruleset instead of via this workflow file. 
+#
+# Reach out to Security Engineering (_SecurityEngineering@kiwibank.co.nz) to get help.
+
+name: "CodeQL - Default Branch"
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+  # schedule:
+  #     - cron: '00 13 * * 6' # Adjusted for NZDT Timezone
+
+jobs:
+  call-reusable-codeql-workflow:
+    uses: Kiwibank/kb-github-reusable-workflows/.github/workflows/orchestrate-code-scanning.yaml@latest
+    secrets: inherit
